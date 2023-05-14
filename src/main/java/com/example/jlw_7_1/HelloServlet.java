@@ -11,12 +11,14 @@ import jakarta.servlet.*;
 public class HelloServlet extends HttpServlet {
     static String ast;
     static boolean trigger;
+    static long counter;
     static int cycle;
 
     static int[][] results;
 
     public HelloServlet(){
-        HelloServlet.ast = "TRIGGER =";
+        HelloServlet.ast = "COUNTER =";
+        HelloServlet.counter = 0;
         HelloServlet.trigger = false;
         HelloServlet.cycle = 6;
     }
@@ -50,12 +52,10 @@ public class HelloServlet extends HttpServlet {
             out.println("<h1> Лаб. раб 7</h1>");
 
             //=============I
-
-            if (HelloServlet.trigger) HelloServlet.trigger = false;
-            else HelloServlet.trigger = true;
+            HelloServlet.counter++;
 
 
-            out.println("<h3> " + HelloServlet.ast + " " +HelloServlet.trigger + "</h3>");
+            out.println("<h3> " + HelloServlet.ast + " " +HelloServlet.counter + "</h3>");
             out.println("<h3> Размер текста таблицы :" + HelloServlet.cycle + "</h3>");
 
             String[] paramArr = request.getParameterValues("prmArr");
